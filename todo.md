@@ -2,7 +2,7 @@
 
 ## Main requirements
 
-0. Add tasks
+0. Add tasks ✅
 1. Complete tasks (mark them as done)
 2. Edit tasks
 3. Delete tasks

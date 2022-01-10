@@ -3,6 +3,7 @@ import { useState } from "react";
 
 // Project files
 import Modal from "./components/Modal";
+import ModalForm from "./components/ModalForm";
 
 export default function App() {
   // Local state
@@ -12,29 +13,14 @@ export default function App() {
   // Properties
   const remainingTodos = todos.filter((item) => item.isPending == false);
 
-  // Methods
-  // not pure
-  function onNewTodo() {
-    const currentTimeInMiliseconds = new Date().valueOf();
-    const title = "Hello world";
-    const newTodo = {
-      id: currentTimeInMiliseconds,
-      title: title,
-      isPending: false,
-      isFavorite: false,
-      category: "",
-    };
-
-    setTodos([...todos, newTodo]);
-  }
-
   // Components
   const Todos = todos.map((item) => <li key={item.id}>{item.title}</li>);
+  const Form = <ModalForm setModal={setModal} state={[todos, setTodos]} />;
 
   return (
     <div className="App">
       <h1>Todo list</h1>
-      <button onClick={onNewTodo}>Add</button>
+      <button onClick={() => setModal(Form)}>Add</button>
       <p>Remaining tasks: {remainingTodos.length}</p>
       {todos.length === 0 && <p>There aren't any todos...</p>}
       {todos.length > 0 && Todos}
