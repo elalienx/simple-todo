@@ -7,9 +7,7 @@ import Modal from "./components/Modal";
 export default function App() {
   // Local state
   const [todos, setTodos] = useState([]);
-  const [modal, setModal] = useState(
-    <p>hello world, modal sent from App.jsx</p>
-  );
+  const [modal, setModal] = useState(null);
 
   // Properties
   const remainingTodos = todos.filter((item) => item.isPending == false);
