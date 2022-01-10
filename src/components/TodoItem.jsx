@@ -1,23 +1,19 @@
-export default function TodoItem({ item, onClick }) {
-  const { title, isCompleted } = item;
-
-  // Properties
-  let finalTitle = String(title);
-
-  // Safeguards
-  if (title === null) finalTitle = "null task";
-  if (title === undefined) finalTitle = "undefined task";
-  if (title === "") finalTitle = "empty task";
+export default function TodoItem({ item, onEdit, onDelete }) {
+  const { id, title, isCompleted } = item;
 
   return (
     <li className="todo-item">
       <input
         type="checkbox"
         checked={isCompleted}
-        onChange={() => onClick(id, { isCompleted: !isCompleted })}
+        onChange={() => onEdit(id, { isCompleted: !isCompleted })}
       />
-      {finalTitle}
-      <button>X</button>
+      <input
+        type="text"
+        value={title}
+        onChange={(event) => onEdit(id, { title: event.target.value })}
+      />
+      <button onClick={() => onDelete(id)}>X</button>
     </li>
   );
 }

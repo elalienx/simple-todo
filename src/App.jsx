@@ -10,21 +10,21 @@ export default function App() {
   // Local state
   const [todos, setTodos] = useState([
     {
-      id: 0,
+      id: 1001,
       title: "Do laundry",
       isCompleted: false,
       isFavorite: false,
       category: "",
     },
     {
-      id: 1,
+      id: 1002,
       title: "Buy food",
       isCompleted: true,
       isFavorite: false,
       category: "",
     },
     {
-      id: 2,
+      id: 1003,
       title: "Study for exame",
       isCompleted: false,
       isFavorite: false,
@@ -38,19 +38,27 @@ export default function App() {
 
   // Components
   const Todos = todos.map((item) => (
-    <TodoItem item={item} key={item.id} onClick={onEditItem} />
+    <TodoItem item={item} key={item.id} onEdit={onEdit} onDelete={onDelete} />
   ));
   const Form = <ModalForm setModal={setModal} state={[todos, setTodos]} />;
 
   // Methods
-  function onEditItem(id, newKeyValue) {
-    const index = todos.findIndex((item) => item.id === id);
-    const item = todos.find((item) => item.id === id);
+  function onEdit(id, newKeyValue) {
+    const clonedList = [...todos];
+    const index = clonedList.findIndex((item) => item.id === id);
+    const item = clonedList[index];
     const editedItem = { ...item, ...newKeyValue };
-    const clonedTodoList = [...todos];
 
-    clonedTodoList[index] = editedItem;
-    setTodos(clonedTodoList);
+    clonedList[index] = editedItem;
+    setTodos(clonedList);
+  }
+
+  function onDelete(id) {
+    const clonedList = [...todos];
+    const index = clonedList.findIndex((item) => item.id === id);
+
+    clonedList.splice(index, 1);
+    setTodos(clonedList);
   }
 
   return (
