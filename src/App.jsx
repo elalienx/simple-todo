@@ -1,9 +1,15 @@
 // NPM packages
 import { useState } from "react";
 
+// Project files
+import Modal from "./components/Modal";
+
 export default function App() {
   // Local state
   const [todos, setTodos] = useState([]);
+  const [modal, setModal] = useState(
+    <p>hello world, modal sent from App.jsx</p>
+  );
 
   // Properties
   const remainingTodos = todos.filter((item) => item.isPending == false);
@@ -34,6 +40,7 @@ export default function App() {
       <p>Remaining tasks: {remainingTodos.length}</p>
       {todos.length === 0 && <p>There aren't any todos...</p>}
       {todos.length > 0 && Todos}
+      <Modal state={[modal, setModal]} />
     </div>
   );
 }
