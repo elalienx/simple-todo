@@ -1,4 +1,4 @@
-export default function TodoItem({ item, onEdit, onDelete }) {
+export default function TodoItem({ item, onUpdate, onDelete }) {
   const { id, title, isCompleted } = item;
 
   return (
@@ -6,12 +6,12 @@ export default function TodoItem({ item, onEdit, onDelete }) {
       <input
         type="checkbox"
         checked={isCompleted}
-        onChange={() => onEdit(id, { isCompleted: !isCompleted })}
+        onChange={() => onUpdate(id, { isCompleted: !isCompleted })}
       />
       <input
         type="text"
         value={title}
-        onChange={(event) => onEdit(id, { title: event.target.value })}
+        onChange={(event) => onUpdate(id, { title: event.target.value })}
       />
       <button onClick={() => onDelete(id)}>X</button>
     </li>

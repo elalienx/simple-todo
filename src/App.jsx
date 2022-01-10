@@ -17,26 +17,31 @@ export default function App() {
 
   // Components
   const Todos = todos.map((item) => (
-    <TodoItem item={item} key={item.id} onEdit={onEdit} onDelete={onDelete} />
+    <TodoItem
+      item={item}
+      key={item.id}
+      onDelete={onDelete}
+      onUpdate={onUpdate}
+    />
   ));
   const Form = <ModalForm setModal={setModal} state={[todos, setTodos]} />;
 
   // Methods
-  function onEdit(id, newKeyValue) {
+  function onDelete(id) {
+    const clonedList = [...todos];
+    const index = clonedList.findIndex((item) => item.id === id);
+
+    clonedList.splice(index, 1);
+    setTodos(clonedList);
+  }
+
+  function onUpdate(id, newKeyValue) {
     const clonedList = [...todos];
     const index = clonedList.findIndex((item) => item.id === id);
     const item = clonedList[index];
     const editedItem = { ...item, ...newKeyValue };
 
     clonedList[index] = editedItem;
-    setTodos(clonedList);
-  }
-
-  function onDelete(id) {
-    const clonedList = [...todos];
-    const index = clonedList.findIndex((item) => item.id === id);
-
-    clonedList.splice(index, 1);
     setTodos(clonedList);
   }
 
