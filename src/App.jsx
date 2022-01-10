@@ -38,8 +38,7 @@ export default function App() {
   function onUpdate(id, newKeyValue) {
     const clonedList = [...todos];
     const index = clonedList.findIndex((item) => item.id === id);
-    const item = clonedList[index];
-    const editedItem = { ...item, ...newKeyValue };
+    const editedItem = { ...clonedList[index], ...newKeyValue };
 
     clonedList[index] = editedItem;
     setTodos(clonedList);
