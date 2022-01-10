@@ -11,7 +11,22 @@ export default function App() {
   const [todos, setTodos] = useState([
     {
       id: 0,
-      isPending: false,
+      title: "Do laundry",
+      isCompleted: false,
+      isFavorite: false,
+      category: "",
+    },
+    {
+      id: 1,
+      title: "Buy food",
+      isCompleted: true,
+      isFavorite: false,
+      category: "",
+    },
+    {
+      id: 2,
+      title: "Study for exame",
+      isCompleted: false,
       isFavorite: false,
       category: "",
     },
@@ -19,19 +34,31 @@ export default function App() {
   const [modal, setModal] = useState(null);
 
   // Properties
-  const remainingTodos = todos.filter((item) => item.isPending == false);
+  const remainingTodos = todos.filter((item) => item.isCompleted == false);
 
   // Components
-  const Todos = todos.map((item) => <TodoItem item={item} key={item.id} />);
+  const Todos = todos.map((item) => (
+    <TodoItem item={item} key={item.id} onClick={onEditItem} />
+  ));
   const Form = <ModalForm setModal={setModal} state={[todos, setTodos]} />;
+
+  // Methods
+  function onEditItem(id, newKeyValue) {
+    const index = todos.findIndex((item) => item.id === id);
+    const item = todos.find((item) => item.id === id);
+    const editedItem = { ...item, ...newKeyValue };
+    const clonedTodoList = [...todos];
+
+    clonedTodoList[index] = editedItem;
+    setTodos(clonedTodoList);
+  }
 
   return (
     <div className="App">
       <h1>Todo list</h1>
       <button onClick={() => setModal(Form)}>Add</button>
       <p>Remaining tasks: {remainingTodos.length}</p>
-      {todos.length === 0 && <p>There aren't any todos...</p>}
-      {todos.length > 0 && Todos}
+      {todos.length > 0 ? Todos : <p>There aren't any todos...</p>}
       <Modal state={[modal, setModal]} />
     </div>
   );

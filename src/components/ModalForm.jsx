@@ -16,7 +16,7 @@ export default function ModalForm({ setModal, state }) {
     const newTodo = {
       id: currentTimeInMiliseconds,
       title: title,
-      isPending: false,
+      isCompleted: false,
       isFavorite: false,
       category: "",
     };

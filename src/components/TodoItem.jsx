@@ -1,5 +1,5 @@
-export default function TodoItem({ item }) {
-  const { title, isPending } = item;
+export default function TodoItem({ item, onClick }) {
+  const { title, isCompleted } = item;
 
   // Properties
   let finalTitle = String(title);
@@ -13,8 +13,8 @@ export default function TodoItem({ item }) {
     <li className="todo-item">
       <input
         type="checkbox"
-        checked={isPending}
-        onChange={() => alert("pending...")}
+        checked={isCompleted}
+        onChange={() => onClick(id, { isCompleted: !isCompleted })}
       />
       {finalTitle}
       <button>X</button>
