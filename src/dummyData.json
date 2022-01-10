@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1001,
+    "title": "Do laundry",
+    "isCompleted": false,
+    "isFavorite": false,
+    "category": ""
+  },
+  {
+    "id": 1002,
+    "title": "Buy food",
+    "isCompleted": true,
+    "isFavorite": false,
+    "category": ""
+  },
+  {
+    "id": 1003,
+    "title": "Study for exame",
+    "isCompleted": false,
+    "isFavorite": false,
+    "category": ""
+  }
+]

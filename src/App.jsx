@@ -2,35 +2,14 @@
 import { useState } from "react";
 
 // Project files
-import Modal from "./components/Modal";
-import ModalForm from "./components/ModalForm";
-import TodoItem from "./components/TodoItem";
+import Modal from "components/modal/Modal";
+import ModalForm from "components/modal-form/ModalForm";
+import TodoItem from "components/todo-item/TodoItem";
+import DummyData from "./dummyData.json";
 
 export default function App() {
   // Local state
-  const [todos, setTodos] = useState([
-    {
-      id: 1001,
-      title: "Do laundry",
-      isCompleted: false,
-      isFavorite: false,
-      category: "",
-    },
-    {
-      id: 1002,
-      title: "Buy food",
-      isCompleted: true,
-      isFavorite: false,
-      category: "",
-    },
-    {
-      id: 1003,
-      title: "Study for exame",
-      isCompleted: false,
-      isFavorite: false,
-      category: "",
-    },
-  ]);
+  const [todos, setTodos] = useState(DummyData);
   const [modal, setModal] = useState(null);
 
   // Properties
