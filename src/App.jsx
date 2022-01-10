@@ -4,17 +4,25 @@ import { useState } from "react";
 // Project files
 import Modal from "./components/Modal";
 import ModalForm from "./components/ModalForm";
+import TodoItem from "./components/TodoItem";
 
 export default function App() {
   // Local state
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([
+    {
+      id: 0,
+      isPending: false,
+      isFavorite: false,
+      category: "",
+    },
+  ]);
   const [modal, setModal] = useState(null);
 
   // Properties
   const remainingTodos = todos.filter((item) => item.isPending == false);
 
   // Components
-  const Todos = todos.map((item) => <li key={item.id}>{item.title}</li>);
+  const Todos = todos.map((item) => <TodoItem item={item} key={item.id} />);
   const Form = <ModalForm setModal={setModal} state={[todos, setTodos]} />;
 
   return (
