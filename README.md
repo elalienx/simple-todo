@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Todo list
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple todo list based on the De-Coding the Technical Interview Process book by Emma Bostian.
 
-## Available Scripts
+# Installation
 
-In the project directory, you can run:
+In order to run the project you need to have Node.js installed in your computer. Here are the steps to open the project: 0. `npm install` to install the dependencies. 0. `npm run` to view the project.
 
-### `npm start`
+# Tech stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+0. NPM, Webpacl, Create React App for the app bundler
+1. React
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Project structure
 
-### `npm test`
+The `App.jsx` inside the `scr/` folder is the entry point of the project.
+The components, its test and its specific CSS styles are placed inside the `components/` folder.
+For opening the modal window we use `createPortal` from `ReactDOM`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Task
 
-### `npm run build`
+## Main requirements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+0. Add tasks ✅
+1. Complete tasks (mark them as done)
+2. Edit tasks
+3. Delete tasks
+4. See how many tasks are remaining
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Extra requirements
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+0. Adding animations when task are deleted
+1. The ability to favorite a task and have it appear at the top of the list
+2. The ability to create groups or categories of tasks (i.e. home, work)
+3. Light and dark theme
 
-### `npm run eject`
+## Deliverables
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+0. Hosted with password to enter.
+1. Private git repo.
+2. Provide Readme file.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Notes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Deleting tasks means i cannot use indexes for the tasks. I can use the date for it.
+- Creating groups needs a special field at creation time. Moving items from categories wasn't requested.
+- Creating groups also means keeping a separate array for the groups?
